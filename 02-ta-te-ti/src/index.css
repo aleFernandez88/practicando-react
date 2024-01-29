@@ -1,0 +1,200 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+@font-face {
+  font-family: Panic ;
+  src: url(../public/panic/Panic.ttf);
+}
+@font-face {
+  font-family: a_box_for;
+  src: url(../public/a_box_for/A_Box_For.ttf);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgba(255,79,97,1) 15%, rgba(255,203,58,1) 35%, rgba(81,29,71,1) 57%, rgba(52,59,60,1) 78%, rgba(30,36,37,1) 100%); 
+  background-image: url("./assets/rm251-mind-01-a.jpg");
+  background-attachment:fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.board {
+  width: fit-content;
+  margin: 40px auto;
+  text-align: center;
+  padding: 50px;
+  background-color: #12181b;
+  box-shadow: 4px 5px 30px #00000085;
+}
+
+.board h1 {
+  color: #ff4f61;
+  font-size: 3rem;
+  margin-bottom: 16px;
+  font-family: Panic;
+}
+
+.board button {
+  padding: 8px 12px;
+  margin: 25px auto;
+  background: transparent;
+  border: 2px solid #eee;
+  color: #eee;
+  width: 100px;
+  border-radius: 5px;
+  transition: 0.2s;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.board button:hover {
+
+}
+
+.board .game {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.turn {
+  display: flex;
+  justify-content: center;
+  margin: 15px auto;
+  width: fit-content;
+  position: relative;
+  border-radius: 10px;
+}
+
+.turn .square,
+.winner .square {
+  width: 70px;
+  height: 70px;
+  pointer-events: none;
+  border-color: transparent;
+}
+
+.square.is-selected {
+  color: #fff;
+  background: rgb(134, 11, 120);
+}
+
+.winner {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.winner .text {
+  background: #111;
+  height: 300px;
+  width: 320px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.winner .win {
+  margin: 0 auto;
+  width: fit-content;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #ff4f61;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 48px;
+}
+
+/* .board button.resetGame{
+  background-color: transparent;
+  border: 1px solid #ffe;
+  color: #ffe;
+  font-family: a_box_for;
+  font-size: 1.5rem;
+  width: auto;
+  transition: all ease-in 0.5s;
+}
+
+.board button.resetGame:hover{
+  color: #333;
+  scale: 1.1;
+} */
+
+.board .resetGame{
+  display: block; 
+  width: 200px; 
+  padding: 20px;
+  border: none; 
+  border-left: 5px solid; 
+  position: relative; 
+  z-index: 2;
+  text-decoration: none;
+  color: #e1e0e0;
+  box-sizing: border-box;  
+  -moz-box-sizing: border-box;  
+  -webkit-box-sizing: border-box; 
+  font-family: a_box_for;
+  font-size: 2rem;
+}
+  
+.board .resetGame:hover{ border-bottom: 0px; color: #fff;}
+.board .resetGame{ border-left: 0px solid #1c0a76; }
+
+.board .resetGame::after { 
+  content: "";
+  height: 100%; 
+  left: 0; 
+  top: 0; 
+  width: 0px;  
+  position: absolute; 
+  transition: all 0.3s ease 0s; 
+  -webkit-transition: all 0.3s ease 0s; 
+  z-index: -1;
+  border-radius: 5px;
+}
+
+.board .resetGame:hover::after{ width: 100%; }
+.board:first-child .resetGame:after{ background: #1c0a76; }
